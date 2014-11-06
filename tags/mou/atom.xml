@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: mou | Mijn Octopress Blog]]></title>
+  <link href="http://whofman.github.com//tags/mou/atom.xml" rel="self"/>
+  <link href="http://whofman.github.com//"/>
+  <updated>2014-11-06T14:41:53+01:00</updated>
+  <id>http://whofman.github.com//</id>
+  <author>
+    <name><![CDATA[Hans Hofman]]></name>
+    <email><![CDATA[hans@hahoweb.nl]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mou en Godrop.it]]></title>
+    <link href="http://whofman.github.com//2012/10/07/Mou-en-Godropit/"/>
+    <updated>2012-10-07T00:00:00+02:00</updated>
+    <id>http://whofman.github.com//2012/10/07/Mou-en-Godropit</id>
+    <content type="html"><![CDATA[<p>Deze blogpost wordt gemaakt met Mou, een mac <em>markdown</em> editor met buitengewone mogelijkheden. Default posting is naar <strong>scriptogr.am</strong>, maar ik onderzoek nu de mogelijkheden met <em>godrop.it</em>.</p>
+
+<p>Deze header is gemaakt met de <em>TextExpander</em> snippet <strong>;bph</strong>.</p>
+
+<p>Ik wil hier ook kijken wat er gebeurt als een bestaande post (post5.md) wordt gewijzigd.</p>
+
+<p>Tevens wil ik nagaan hoe <strong>Mou</strong> met <em>images</em> in <em>godrop.it</em> om kan gaan. Images moeten worden opgeslagen in <em>~Dropbox/Apps/godrop.it/images</em> waarbij in de tekst de link alsvolgt wordt opgenomen: <em>![alt text](/images/image.jpg "Image text")</em>.</p>
+
+<p><img src="/images/werkkamer.jpg" title="Mijn werk kamer" alt="werkkamer" /></p>
+]]></content>
+  </entry>
+  
+</feed>

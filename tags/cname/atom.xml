@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: cname | Mijn Octopress Blog]]></title>
+  <link href="http://whofman.github.com//tags/cname/atom.xml" rel="self"/>
+  <link href="http://whofman.github.com//"/>
+  <updated>2014-11-06T14:41:53+01:00</updated>
+  <id>http://whofman.github.com//</id>
+  <author>
+    <name><![CDATA[Hans Hofman]]></name>
+    <email><![CDATA[hans@hahoweb.nl]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Huidige Octopress Setup]]></title>
+    <link href="http://whofman.github.com//2013/10/02/huidige-octopress-setup/"/>
+    <updated>2013-10-02T16:25:00+02:00</updated>
+    <id>http://whofman.github.com//2013/10/02/huidige-octopress-setup</id>
+    <content type="html"><![CDATA[<p>De vorige publicatie ging niet zoals ik dacht. Het bleek dat de huidige <em>Octopress setup</em> opgezet was om te publiceren op mijn <em>Github</em> blog. Derhalve moeten de volgende stappen gevolgd worden:</p>
+
+<pre><code>post "Huidige Octopress Setup" --dest octopress
+cd ~/octopress
+rake generate
+rake deploy
+</code></pre>
+
+<p>De url <strong>blog.hahoweb.nl</strong> wijst naar mijn <em>Github</em> account <em>whofman.github.com</em> via een <strong>CNAME</strong> bij mijn domain provider.</p>
+]]></content>
+  </entry>
+  
+</feed>

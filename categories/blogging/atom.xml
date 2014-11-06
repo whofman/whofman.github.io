@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: blogging | Mijn Octopress Blog]]></title>
+  <link href="http://whofman.github.com//categories/blogging/atom.xml" rel="self"/>
+  <link href="http://whofman.github.com//"/>
+  <updated>2014-11-06T14:41:53+01:00</updated>
+  <id>http://whofman.github.com//</id>
+  <author>
+    <name><![CDATA[Hans Hofman]]></name>
+    <email><![CDATA[hans@hahoweb.nl]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Kirby v2 Panel]]></title>
+    <link href="http://whofman.github.com//2014/09/26/kirby-v2-panel/"/>
+    <updated>2014-09-26T13:28:44+02:00</updated>
+    <id>http://whofman.github.com//2014/09/26/kirby-v2-panel</id>
+    <content type="html"><![CDATA[<p>Kirby v2 panel gaf <em>write access</em> fouten, in tegenstelling tot de v1 versie. De oplossing was het toewijzen van de <em>ownership</em> of een aantal directories aan <strong>Apache</strong>.</p>
+
+<pre><code>    sudo chown -R _www:staff content
+    sudo chown -R _www:staff thumbs
+    sudo chown -R _www:staff site/accounts
+    sudo chown -R _www:staff site/cache
+    sudo chown -R _www:staff assets/avatars
+</code></pre>
+
+<p>en deze <strong>writable</strong> te maken.</p>
+
+<pre><code>    chmod -R 755 content
+    chmod -R 755 thumbs
+    chmod -R 755 site/accounts
+    chmod -R 755 site/cache
+    chmod -R 755 assets/avatars
+</code></pre>
+
+<p>Probleem opgelost.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kirby v2 Beta]]></title>
+    <link href="http://whofman.github.com//2014/09/23/kirby-v2-beta/"/>
+    <updated>2014-09-23T18:08:18+02:00</updated>
+    <id>http://whofman.github.com//2014/09/23/kirby-v2-beta</id>
+    <content type="html"><![CDATA[<p>Kirby v2 Beta is beschikbaar. Ik had dezelfde problemen met <strong>Apache</strong> mod_rewrite, dus heb ik er maar eens dieper ingedoken. Het probleem is kennelijk de instelling van de defaults van de server.</p>
+
+<p>/Library/Server/Web/Config/Apache2/Sites/</p>
+
+<pre><code>    Add to 0000_any_80_kirby.hahomail.nl.conf
+
+    Options Indexes Includes MultiViews FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</code></pre>
+
+<p>and then mod_rewrite werkt als bedoeld.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KirbyCMS]]></title>
+    <link href="http://whofman.github.com//2014/09/23/kirbycms/"/>
+    <updated>2014-09-23T16:39:49+02:00</updated>
+    <id>http://whofman.github.com//2014/09/23/kirbycms</id>
+    <content type="html"><![CDATA[<p>Kirby is een CMS gebaseerd op (markdown) bestanden, een zgn <strong>NoDB</strong> systeem. Dit betekent gemakkelijke beckup, idem aanmaken en wijzigen van postings via je standaard editor.</p>
+
+<p>Ik heb een implementatie gemaakt in ~/Sites/kirbycms en deze is oproepbaar via http://kirby.hahomail.nl. Slechts <em>één</em> wezenlijke modificatie was nodig om het systeem aan de praat te krijgen:</p>
+
+<pre><code>~/Sites/kirbycms/config/config.php
+    // disable mod_rewrite on iMac/OS X
+    c::set('rewrite', false);
+    c::set('url', 'http://kirby.hahomail.nl');
+</code></pre>
+
+<p>Dit was nodig omdat <strong>Apache</strong> (Mac OSX) problemen heeft met mod_rewrite. Boven staande fix repareert dit voldoende.</p>
+
+<p>Tevens heb ik de volgende opties geimplementeerd:</p>
+
+<pre><code>    Tags
+    Draft status
+    Datum van posting
+    Zoeken in de posts
+</code></pre>
+
+<p>Het posten van berichten gaat eenvoudig met de markdown editor <strong>Mou</strong> die opgeroepen wordt met het commandline script <strong>kirby-post</strong>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Deploy Octopress op Github]]></title>
+    <link href="http://whofman.github.com//2014/03/14/deploy-octopress-op-github/"/>
+    <updated>2014-03-14T23:27:44+01:00</updated>
+    <id>http://whofman.github.com//2014/03/14/deploy-octopress-op-github</id>
+    <content type="html"><![CDATA[<p>De volgende stappen zijn noodzakelijk</p>
+
+<pre><code>    Maak en Github repository (whofman.github.com)
+    rake setup_github_pages[git@github.com:whofman/whofman.github.com]
+    rake deploy
+    git add .   
+    git commit -am "Deployment Setup"
+    git push
+    git push --set-upstream origin source
+</code></pre>
+
+<p>Na de laatste <strong>push</strong> moet er ongeveer 10 minuten worden gewacht voordat de <strong>hostname</strong> is gepropageerd.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Customizations]]></title>
+    <link href="http://whofman.github.com//2014/03/13/octopress-customizations/"/>
+    <updated>2014-03-13T14:52:21+01:00</updated>
+    <id>http://whofman.github.com//2014/03/13/octopress-customizations</id>
+    <content type="html"><![CDATA[<p>Ik heb een aantal wijzigingen aangebracht gebaseerd op een artikel in <a href="" title="http://www.ewal.net/2012/09/08/octopress-customizations/">Ewal.net</a>. Deze zijn</p>
+
+<ul>
+<li>Verwijder /blog/ van URLs</li>
+<li>Maak een categories index page</li>
+<li>Een nieuw <strong>Rake Post</strong> taak</li>
+</ul>
+
+
+<p>Voorbeeld van een nieuwe post:</p>
+
+<pre><code>rake new_post["titel"]
+</code></pre>
+
+<p>In <strong>rake generate</strong> heb ik het copiëren van de gegenereerde code naar het target systeem toegevoegd:</p>
+
+<pre><code>target_dir = "/Users/hans/Site/myblog"
+cp_r "#{public_dir}/.", target_dir 
+</code></pre>
+
+<p>Een aantal andere <strong>Rake</strong> wijzigingen worden nog bestudeerd.</p>
+]]></content>
+  </entry>
+  
+</feed>

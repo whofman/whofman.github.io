@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: journal | Mijn Octopress Blog]]></title>
+  <link href="http://whofman.github.com//tags/journal/atom.xml" rel="self"/>
+  <link href="http://whofman.github.com//"/>
+  <updated>2014-11-06T14:41:53+01:00</updated>
+  <id>http://whofman.github.com//</id>
+  <author>
+    <name><![CDATA[Hans Hofman]]></name>
+    <email><![CDATA[hans@hahoweb.nl]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Day One]]></title>
+    <link href="http://whofman.github.com//2012/11/19/day-one/"/>
+    <updated>2012-11-19T15:04:00+01:00</updated>
+    <id>http://whofman.github.com//2012/11/19/day-one</id>
+    <content type="html"><![CDATA[<p>Ik heb vandaag de scripts van <em>Brett Terpstra</em> betreffende <strong>Day One</strong> geïmplementeerd op de iMac. In <em>~/bin</em>  <strong>logtodayone.rb</strong> en in <em>~/Library/Applications Support/Launchbar/Actions/</em> <strong>Log to Day One.scpt</strong>. Ook heb ik een alias <strong>log</strong> dat een entry aan de <strong>Day One</strong> dagbiek toevoegd.</p>
+
+<p>De syntax van een entry is alsvolgt: ”! [datum] tekst” met optioneel ! voor een <strong>star</strong> entry.  Het datum formaat kan zijn</p>
+
+<ul>
+<li>y     gisteren (yesterday)</li>
+<li>−3      3 dagen geleden</li>
+<li>. 12:30   om half een.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
