@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mijn Octopress Blog</title>
+  <meta name="author" content="Hans Hofman">
+
+  
+  <meta name="description" content="Na met diverse systemen geëxperimenteerd te hebben en rekening te houden met mijn post Aandacht, heb ik gekozen voor database overeenkomstig de &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whofman.github.com//blog/page/4/">
+  <link href="/octopress/favicon.png" rel="icon">
+  <link href="/octopress/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/octopress/javascripts/modernizr-2.0.js"></script>
+  <script src="/octopress/javascripts/ender.js"></script>
+  <script src="/octopress/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/octopress/atom.xml" rel="alternate" title="Mijn Octopress Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/octopress/">Mijn Octopress Blog</a></h1>
+  
+    <h2>Een blogging framework voor hackers</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/octopress/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://www.duckduckgo.com" method="get">
+ 	<form action="http://www.duckduckgo.com" method="get">
+	  <fieldset role="search">
+	      <input type="hidden" name="sites" value="whofman.github.com/" />
+	      <input class="search" type="text" name="q" results="0" placeholder="Zoek&hellip;"/>
+	  </fieldset>
+	</form>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/octopress/">Blog</a></li>
+  <li><a href="/octopress/archives">Archief</a></li>
+  <li><a href="/octopress/about">Over</a></li>
+  <li><a href="/octopress/contact">Contact</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/10/18/mijn-blog-keus/">Mijn Blog Keus</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-18T14:45:00+02:00" pubdate data-updated="true">Oct 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Na met diverse systemen geëxperimenteerd te hebben en rekening te houden met mijn post <em>Aandacht</em>, heb ik gekozen voor database overeenkomstig de <strong>Pritlog</strong> sqlite3 database. Deze zal gevoed worden door <em>Markdown</em> editors via een <strong>Hazel</strong> script. De editors saven de file in <em>~/Dropbox/Notes</em> met als filename <strong>bp_<em>&lt;filename></em>.md</strong>. Een <strong>Hazel </strong> regel verplaatst iedere file met voornoemde filename naar de <em>inbox</em> van het database systeem. Deze wordt op zijn beurt gescanned door een <em>cronjob</em> <strong>post_it.php</strong> die de tekst file converteerd en toevoegd aan de database.</p>
+
+<p>Een tekst file dient te worden voorzien van een <em>header</em> met minimaal de <strong>Titel:</strong> optie:</p>
+
+<ul>
+<li>Titel:&lt;post titel <strong>VEREIST</strong>></li>
+<li>Datum:<strong>yyyy-mm-dd</strong> [hh:mm:ss]</li>
+<li>Type:<strong>post</strong>|page</li>
+<li>Tag:&lt;keywords> gescheiden door een spatie</li>
+<li>Publ:<strong>1</strong>|0 (ja/nee publiseren)</li>
+</ul>
+
+
+<p>Via een <a href="http://hahoweb.nl:8000" title="webpagina">webpagina</a> kan de database bekeken worden. Te zijner tijd zal ook een <em>inline editor</em> worden toegevoegd.</p>
+
+<p>De volgende <em>markdown</em> editors zijn eenvoudig te configureren voor gebruik met dit <em>Blog</em> systeem:</p>
+
+<ul>
+<li><em>Byword</em>, een Mac en iOS editor</li>
+<li><em>Mou</em>, een Mac editor</li>
+<li><em>Writing Kit</em>, een iOS editor</li>
+<li><em>Denote</em>, een Android editor</li>
+</ul>
+
+
+<p>In feite is elke editor geschikt als deze tenminste een bestand in de <em>~/Dropbox/Notes</em> folder kan opslaan.</p>
+
+<p>Ik heb besloten het systeem <strong>HahoBlog</strong> te noemen</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/10/16/blog-systeem-overzicht/">Blog Systeem Overzicht</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T14:45:00+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Het resultaat van het bekijken van een aantal blog systemen voor persoonlijk gebruik. Ik heb vooral gekeken naar de volgende criteria:</p>
+
+<ul>
+<li>Koppeling aan (sub)domain</li>
+<li>Implementeren op eigen server</li>
+<li>Zoek faciliteiten op het blog systeem</li>
+</ul>
+
+
+<p>Kort overzicht</p>
+
+<ul>
+<li><p><strong>GoDrop.it</strong></p>
+
+<p>  <code>Dit systeem werkt goed. De Sync frekwentie is laag als je aan het testen bent. Ik mis hier nog het gebruiken van een (sub)domein en en mogelijkheid om het Archief te doorzoeken</code></p></li>
+<li><p>__<a href="http://scriptogr.am">Scriptogr.am</a></p>
+
+<p>  <code>Ook een prettig werkend systeem, vooral met de Mac editor Mou. Deze kan direct in de post directory van scriptogr.am schrijven. Helaas ontbeert scriptogr.am automatische synchronisatie. Het systeem ondersteunt wel het gebruik van een (sub)domein.</code></p></li>
+<li><p><strong>Skrivr</strong></p>
+
+<p>  <code>Nog niet voor iedereen te gebruiken. Ik wacht (al lang) op een uitnodiging.</code></p></li>
+<li><p>__<a href="http://pritlog.com">Pritlog</a></p>
+
+<p>  <code>Dit systeem ik heb draaien op mijn server. Het is niet alleen voor persoonlijk gebruik. Posting gebeurt via het web interface. Ik heb een driver gemaakt die .md files in het systeem zet. Triggering doet Hazel die een posting folder monitoort.</code></p></li>
+<li><p><strong>Simple PHP Blog</strong></p>
+
+<p>  <code>Ook dit systeem draait op mijn server. Ik vind de home pagina te "druk". Verder lijkt het moelijk om auto-insert te realiseren.</code></p></li>
+<li><p>__<a href="http://phpsqlitecms.net">PHPSqliteCms</a></p>
+
+<p>  <code>Zie Simple PHP Blog</code></p></li>
+<li><p>__<a href="http://www.s9y.org">Serendipity</a></p>
+
+<p>  <code>Zie Simple PHP Blog</code></p></li>
+</ul>
+
+
+<p>Het voorlopige resultaat van dit onderzoekje is dat ik verder aan de slag ga met zowel <em>godrop.it</em> als <em>scriptogr.am</em>. Ondermeer zal ik <strong>Search</strong> bekijken en mogelijk <strong>CSS</strong> aanpassingen.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/10/13/testing-online-blogging/">Blogging Systemen</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-13T14:45:00+02:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>De eerste file is aangemaakt in een verzamel directory <em>Posts</em>. Deze directory wordt op de Mac gemonitored door <em>Hazel</em> op files met extensie .md. Wordt er een gevonden dan worden de volgende regels toegepast:</p>
+
+<ul>
+<li>Copy to Dropbox/Apps/GoDrop.it/Posts</li>
+<li>Copy to Dropbox.Apps/Scriptogram/Posts/</li>
+<li>Rename to .txt extensie</li>
+</ul>
+
+
+<p>De file is goed aangekomen in GoDrop.it. Met het andere systeem heb ik nog problemen. De <strong>sync</strong> knop werkt bij mij niet en ik ga dus maar eens uitzoeken hoe dit komt.</p>
+
+<p><strong>Opmerking</strong></p>
+
+<p><strong>Let op</strong>. De H1 titel  &#8221; Blogging system&#8221; wordt vervangen door de <strong>Title:</strong> van deze post.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/10/08/Blogging-Systeem-Eigenschappen/">Blogging Systeem Eigenschappen</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-08T00:00:00+02:00" pubdate data-updated="true">Oct 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>De volgende punten verdienen aandacht:</p>
+
+<ul>
+<li>Gebruik van Tags</li>
+<li>Gebruiken van filenames met datum/tijd indicatie en hun archivering</li>
+<li>Posten via de <em>Mac</em> command line</li>
+<li>Het gebruik van <em>Hazel</em> op de <em>Mac</em></li>
+<li><em>scriptogr.am</em> heeft een <strong>Archief</strong> systeem, <em>godrip.it</em> niet.</li>
+</ul>
+
+
+<p>Naast deze punten ga ik ook t.z.t. naar <em>Search</em> en <em>CSS</em> kijken.</p>
+
+<p><strong>Opmerking</strong></p>
+
+<p>De <em>dropgo.it</em> sites van <em>now</em>, <em>michielroelfsema</em> en <em>minddrop</em> zij interessant om te bekijken.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/10/07/diverse-blogging-systemen/">Diverse Blogging Systemen</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-07T15:13:00+02:00" pubdate data-updated="true">Oct 7<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Via een serie van korte posts ga ik op zoek naar een ideaal personal blog systeem. Tevens is het de bedoeling dit op een later tijdstip te migreren naar mijn NAS. De volgende systemen komen als eerste aan de beurt.</p>
+
+<ul>
+<li>GoDrop.it</li>
+<li>Scriptogr.am</li>
+<li>Skrivr</li>
+<li>Pritlog</li>
+<li>Simple PHP Blog</li>
+<li>PHPSqliteCms</li>
+<li>Serendipity</li>
+</ul>
+
+
+<p>Mijn test setup is zodanig ik een copyright van alle Posts bewaar en een utility deze naar de juiste Dropbox locatie laat verplaatsen. Op zo&#8217;n manier kan ik meerdere systemen tegelijk testen.</p>
+
+<p>Een aantal andere systemen is mischien ook nog de moeite waard:</p>
+
+<ul>
+<li>PivotX.net</li>
+<li>Octopress.org</li>
+<li>Jekyll</li>
+<li>TextPattern.com</li>
+</ul>
+
+
+<p>Ik wil hier een plaatje laten zien. Het image dient zich te bevinden in de <strong>images</strong> directory en de syntax
+van het statement is alsvolgt:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>   ![alt tekst](/images/&lt;image&gt; "Picture tekst")</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/octopress/images/werkkamer.jpg" title="Hobby Kamer" alt="Mijn werkkamer" /></p>
+
+<center>Mijn Hobby Kamer</center>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/octopress/blog/page/5/">&larr; Older</a>
+    
+    <a href="/octopress/archives">Blog Archives</a>
+    
+    <a class="next" href="/octopress/blog/page/3/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Over Mij</h1>
+  <img class="left" src="/octopress/images/hans.jpg" width="50" height="50" title="&#34;Hans Hofman&#34;" alt="&#34;Hans Hofman&#34;">
+  <p>Hans Hofman<br>Eindhoven NL</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/octopress/2014/09/26/kirby-v2-panel/">Kirby v2 Panel</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/09/23/kirby-v2-beta/">Kirby v2 Beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/09/23/kirbycms/">KirbyCMS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/03/14/deploy-octopress-op-github/">Deploy Octopress op Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/03/13/octopress-customizations/">Octopress Customizations</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categoriën</h1>
+  <ul id="categories">
+    <li class='category'><a href='/octopress/blog/categories/blogging/'>blogging (16)</a></li>
+<li class='category'><a href='/octopress/blog/categories/editors/'>editors (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/godropit/'>godropit (3)</a></li>
+<li class='category'><a href='/octopress/blog/categories/phpsqlitecms/'>phpsqlitecms (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/pritlog/'>pritlog (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/scriptogram/'>scriptogram (3)</a></li>
+<li class='category'><a href='/octopress/blog/categories/serendipity/'>serendipity (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/skrivr/'>skrivr (1)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul id="categories">
+      <li class='tag'><a href='/octopress/blog/tags/day-one/'>Day One (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/cname/'>cname (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/dropbox/'>dropbox (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/github/'>github (2)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/hazel/'>hazel (3)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/journal/'>journal (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/kirby/'>kirby (3)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/launchd/'>launchd (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/lingon/'>lingon (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/mou/'>mou (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/octopress/'>octopress (6)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/tag/'>tag (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/textexpander/'>textexpander (1)</a></li>
+
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/whofman">@whofman</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whofman',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/octopress/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Hans Hofman -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

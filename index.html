@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mijn Octopress Blog</title>
+  <meta name="author" content="Hans Hofman">
+
+  
+  <meta name="description" content="Kirby v2 panel gaf write access fouten, in tegenstelling tot de v1 versie. De oplossing was het toewijzen van de ownership of een aantal directories &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whofman.github.com//">
+  <link href="/octopress/favicon.png" rel="icon">
+  <link href="/octopress/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/octopress/javascripts/modernizr-2.0.js"></script>
+  <script src="/octopress/javascripts/ender.js"></script>
+  <script src="/octopress/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/octopress/atom.xml" rel="alternate" title="Mijn Octopress Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/octopress/">Mijn Octopress Blog</a></h1>
+  
+    <h2>Een blogging framework voor hackers</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/octopress/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://www.duckduckgo.com" method="get">
+ 	<form action="http://www.duckduckgo.com" method="get">
+	  <fieldset role="search">
+	      <input type="hidden" name="sites" value="whofman.github.com/" />
+	      <input class="search" type="text" name="q" results="0" placeholder="Zoek&hellip;"/>
+	  </fieldset>
+	</form>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/octopress/">Blog</a></li>
+  <li><a href="/octopress/archives">Archief</a></li>
+  <li><a href="/octopress/about">Over</a></li>
+  <li><a href="/octopress/contact">Contact</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2014/09/26/kirby-v2-panel/">Kirby V2 Panel</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-26T13:28:44+02:00" pubdate data-updated="true">Sep 26<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kirby v2 panel gaf <em>write access</em> fouten, in tegenstelling tot de v1 versie. De oplossing was het toewijzen van de <em>ownership</em> of een aantal directories aan <strong>Apache</strong>.</p>
+
+<pre><code>    sudo chown -R _www:staff content
+    sudo chown -R _www:staff thumbs
+    sudo chown -R _www:staff site/accounts
+    sudo chown -R _www:staff site/cache
+    sudo chown -R _www:staff assets/avatars
+</code></pre>
+
+<p>en deze <strong>writable</strong> te maken.</p>
+
+<pre><code>    chmod -R 755 content
+    chmod -R 755 thumbs
+    chmod -R 755 site/accounts
+    chmod -R 755 site/cache
+    chmod -R 755 assets/avatars
+</code></pre>
+
+<p>Probleem opgelost.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2014/09/23/kirby-v2-beta/">Kirby V2 Beta</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-23T18:08:18+02:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kirby v2 Beta is beschikbaar. Ik had dezelfde problemen met <strong>Apache</strong> mod_rewrite, dus heb ik er maar eens dieper ingedoken. Het probleem is kennelijk de instelling van de defaults van de server.</p>
+
+<p>/Library/Server/Web/Config/Apache2/Sites/</p>
+
+<pre><code>    Add to 0000_any_80_kirby.hahomail.nl.conf
+
+    Options Indexes Includes MultiViews FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</code></pre>
+
+<p>and then mod_rewrite werkt als bedoeld.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2014/09/23/kirbycms/">KirbyCMS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-23T16:39:49+02:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kirby is een CMS gebaseerd op (markdown) bestanden, een zgn <strong>NoDB</strong> systeem. Dit betekent gemakkelijke beckup, idem aanmaken en wijzigen van postings via je standaard editor.</p>
+
+<p>Ik heb een implementatie gemaakt in ~/Sites/kirbycms en deze is oproepbaar via http://kirby.hahomail.nl. Slechts <em>één</em> wezenlijke modificatie was nodig om het systeem aan de praat te krijgen:</p>
+
+<pre><code>~/Sites/kirbycms/config/config.php
+    // disable mod_rewrite on iMac/OS X
+    c::set('rewrite', false);
+    c::set('url', 'http://kirby.hahomail.nl');
+</code></pre>
+
+<p>Dit was nodig omdat <strong>Apache</strong> (Mac OSX) problemen heeft met mod_rewrite. Boven staande fix repareert dit voldoende.</p>
+
+<p>Tevens heb ik de volgende opties geimplementeerd:</p>
+
+<pre><code>    Tags
+    Draft status
+    Datum van posting
+    Zoeken in de posts
+</code></pre>
+
+<p>Het posten van berichten gaat eenvoudig met de markdown editor <strong>Mou</strong> die opgeroepen wordt met het commandline script <strong>kirby-post</strong>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2014/03/14/deploy-octopress-op-github/">Deploy Octopress Op Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-14T23:27:44+01:00" pubdate data-updated="true">Mar 14<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>De volgende stappen zijn noodzakelijk</p>
+
+<pre><code>    Maak en Github repository (whofman.github.com)
+    rake setup_github_pages[git@github.com:whofman/whofman.github.com]
+    rake deploy
+    git add .   
+    git commit -am "Deployment Setup"
+    git push
+    git push --set-upstream origin source
+</code></pre>
+
+<p>Na de laatste <strong>push</strong> moet er ongeveer 10 minuten worden gewacht voordat de <strong>hostname</strong> is gepropageerd.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2014/03/13/octopress-customizations/">Octopress Customizations</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-13T14:52:21+01:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ik heb een aantal wijzigingen aangebracht gebaseerd op een artikel in <a href="" title="http://www.ewal.net/2012/09/08/octopress-customizations/">Ewal.net</a>. Deze zijn</p>
+
+<ul>
+<li>Verwijder /blog/ van URLs</li>
+<li>Maak een categories index page</li>
+<li>Een nieuw <strong>Rake Post</strong> taak</li>
+</ul>
+
+
+<p>Voorbeeld van een nieuwe post:</p>
+
+<pre><code>rake new_post["titel"]
+</code></pre>
+
+<p>In <strong>rake generate</strong> heb ik het copiëren van de gegenereerde code naar het target systeem toegevoegd:</p>
+
+<pre><code>target_dir = "/Users/hans/Site/myblog"
+cp_r "#{public_dir}/.", target_dir 
+</code></pre>
+
+<p>Een aantal andere <strong>Rake</strong> wijzigingen worden nog bestudeerd.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/octopress/blog/page/2/">&larr; Older</a>
+    
+    <a href="/octopress/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Over Mij</h1>
+  <img class="left" src="/octopress/images/hans.jpg" width="50" height="50" title="&#34;Hans Hofman&#34;" alt="&#34;Hans Hofman&#34;">
+  <p>Hans Hofman<br>Eindhoven NL</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/octopress/2014/09/26/kirby-v2-panel/">Kirby v2 Panel</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/09/23/kirby-v2-beta/">Kirby v2 Beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/09/23/kirbycms/">KirbyCMS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/03/14/deploy-octopress-op-github/">Deploy Octopress op Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/03/13/octopress-customizations/">Octopress Customizations</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categoriën</h1>
+  <ul id="categories">
+    <li class='category'><a href='/octopress/blog/categories/blogging/'>blogging (16)</a></li>
+<li class='category'><a href='/octopress/blog/categories/editors/'>editors (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/godropit/'>godropit (3)</a></li>
+<li class='category'><a href='/octopress/blog/categories/phpsqlitecms/'>phpsqlitecms (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/pritlog/'>pritlog (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/scriptogram/'>scriptogram (3)</a></li>
+<li class='category'><a href='/octopress/blog/categories/serendipity/'>serendipity (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/skrivr/'>skrivr (1)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul id="categories">
+      <li class='tag'><a href='/octopress/blog/tags/day-one/'>Day One (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/cname/'>cname (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/dropbox/'>dropbox (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/github/'>github (2)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/hazel/'>hazel (3)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/journal/'>journal (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/kirby/'>kirby (3)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/launchd/'>launchd (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/lingon/'>lingon (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/mou/'>mou (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/octopress/'>octopress (6)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/tag/'>tag (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/textexpander/'>textexpander (1)</a></li>
+
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/whofman">@whofman</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whofman',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/octopress/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Hans Hofman -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mijn Octopress Blog</title>
+  <meta name="author" content="Hans Hofman">
+
+  
+  <meta name="description" content="Na diverse pogingen is het (mij althans) onmogelijk gebleken om rake commands via Hazel uit te voeren. Derhalve doe ik dat (voorlopig?) weer &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whofman.github.com//blog/page/3/">
+  <link href="/octopress/favicon.png" rel="icon">
+  <link href="/octopress/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/octopress/javascripts/modernizr-2.0.js"></script>
+  <script src="/octopress/javascripts/ender.js"></script>
+  <script src="/octopress/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/octopress/atom.xml" rel="alternate" title="Mijn Octopress Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/octopress/">Mijn Octopress Blog</a></h1>
+  
+    <h2>Een blogging framework voor hackers</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/octopress/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://www.duckduckgo.com" method="get">
+ 	<form action="http://www.duckduckgo.com" method="get">
+	  <fieldset role="search">
+	      <input type="hidden" name="sites" value="whofman.github.com/" />
+	      <input class="search" type="text" name="q" results="0" placeholder="Zoek&hellip;"/>
+	  </fieldset>
+	</form>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/octopress/">Blog</a></li>
+  <li><a href="/octopress/archives">Archief</a></li>
+  <li><a href="/octopress/about">Over</a></li>
+  <li><a href="/octopress/contact">Contact</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/12/04/Nieuwe-ontwikkelingen/">Nieuwe Ontwikkelingen</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-04T15:59:00+01:00" pubdate data-updated="true">Dec 4<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Na diverse pogingen is het (mij althans) onmogelijk gebleken om <strong>rake</strong> commands via <strong>Hazel</strong> uit te voeren. Derhalve doe ik dat (voorlopig?) weer handmatig.</p>
+
+<p>Ik heb nu een poging gewaagd om dit blog op <strong>GitHub</strong> te vestigen. Via diverse publicaties op het internet gewijd aan dit onderwerp, is het tenslotte gelukt.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/octopress/2012/12/04/Nieuwe-ontwikkelingen/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/12/03/Hazel-en-Octopress/">Hazel en Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-03T14:08:00+01:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Om publiceren van posts in <strong>Octopress</strong> te vergemakkelijken, wordt het volgende <strong>Hazel</strong> script gebruikt:</p>
+
+<pre><code>cd $HOME/octopress
+source $HOME/.rvm/scripts/rvm
+mv $1 source/_posts
+rake generate
+cp -R public/* /Libray/WebServer/Documents/octopress
+</code></pre>
+
+<p>Om de deployment naar de <strong>Apache</strong> server mogelijk te maken, is de <em>octpress</em> directory <em>open</em> gezet.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/12/03/Rake-Test/">Rake Test</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-03T13:38:00+01:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Deze post wordt in eerste instantie geplaatst in de folder ~/Dropbox/Posts. Hazel zal dan deze post verplaatsen naar ~/octopress/source/_posts indien de meta conditie <strong>published</strong> <em>true</em> is. Als tweede aktie wordt een script uitgevoerd met de opdracht ”<em>rake generate</em>”. Vervolgens wordt de gegenereerde data getransferreerd naar de lokale webserver.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/11/29/blog-server/">Blog Server</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-29T14:44:00+01:00" pubdate data-updated="true">Nov 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Alle blog systemen werden getest op mijn <strong>NAS</strong>, een <strong>Qnap TS-219P+</strong> systeem met 2 Tb drivers
+in <em>Raid-0</em> configuratie. Web access was gemakkelijk via de link <a href="http://sun/blog">sun</a> waarin sun de lokale naam van de server is. Om het definitieve systeem ook via mijn eigen domein op internet te kunnen benaderen, moest ik gebruik maken van een virtual host op een ander port dan de standaard 80. (dit door de eisen van een lokale mac computer) Dit zou de eerste keer worden dat ik gebruik moest maken van een virtuele host op de <strong>Apache web server</strong>. Dat heb ik alsvolgt geraliseerd:</p>
+
+<pre><code>&lt;VirtualHost *:8000&gt;
+    ServerAdmain hans@hahoweb.nl 
+    DocumentRoot /share/Web/blog 
+    ServerName blog.hahoweb.nl 
+&lt;VirtualHost&gt;
+</code></pre>
+
+<p>Hiermee kan ik de blog via internet benaderen met de Url <strong>(http://blog.hahoweb.nl:8000/)</strong>.</p>
+
+<p>De domein naam <strong>hahoweb.nl</strong>
+ heb ik sinds lange tijd in gebruik.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/octopress/2012/11/19/day-one/">Day One</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-19T15:04:00+01:00" pubdate data-updated="true">Nov 19<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ik heb vandaag de scripts van <em>Brett Terpstra</em> betreffende <strong>Day One</strong> geïmplementeerd op de iMac. In <em>~/bin</em>  <strong>logtodayone.rb</strong> en in <em>~/Library/Applications Support/Launchbar/Actions/</em> <strong>Log to Day One.scpt</strong>. Ook heb ik een alias <strong>log</strong> dat een entry aan de <strong>Day One</strong> dagbiek toevoegd.</p>
+
+<p>De syntax van een entry is alsvolgt: ”! [datum] tekst” met optioneel ! voor een <strong>star</strong> entry.  Het datum formaat kan zijn</p>
+
+<ul>
+<li>y     gisteren (yesterday)</li>
+<li>−3      3 dagen geleden</li>
+<li>. 12:30   om half een.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/octopress/blog/page/4/">&larr; Older</a>
+    
+    <a href="/octopress/archives">Blog Archives</a>
+    
+    <a class="next" href="/octopress/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Over Mij</h1>
+  <img class="left" src="/octopress/images/hans.jpg" width="50" height="50" title="&#34;Hans Hofman&#34;" alt="&#34;Hans Hofman&#34;">
+  <p>Hans Hofman<br>Eindhoven NL</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/octopress/2014/09/26/kirby-v2-panel/">Kirby v2 Panel</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/09/23/kirby-v2-beta/">Kirby v2 Beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/09/23/kirbycms/">KirbyCMS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/03/14/deploy-octopress-op-github/">Deploy Octopress op Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/2014/03/13/octopress-customizations/">Octopress Customizations</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categoriën</h1>
+  <ul id="categories">
+    <li class='category'><a href='/octopress/blog/categories/blogging/'>blogging (16)</a></li>
+<li class='category'><a href='/octopress/blog/categories/editors/'>editors (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/godropit/'>godropit (3)</a></li>
+<li class='category'><a href='/octopress/blog/categories/phpsqlitecms/'>phpsqlitecms (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/pritlog/'>pritlog (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/scriptogram/'>scriptogram (3)</a></li>
+<li class='category'><a href='/octopress/blog/categories/serendipity/'>serendipity (1)</a></li>
+<li class='category'><a href='/octopress/blog/categories/skrivr/'>skrivr (1)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul id="categories">
+      <li class='tag'><a href='/octopress/blog/tags/day-one/'>Day One (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/cname/'>cname (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/dropbox/'>dropbox (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/github/'>github (2)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/hazel/'>hazel (3)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/journal/'>journal (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/kirby/'>kirby (3)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/launchd/'>launchd (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/lingon/'>lingon (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/mou/'>mou (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/octopress/'>octopress (6)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/tag/'>tag (1)</a></li>
+<li class='tag'><a href='/octopress/blog/tags/textexpander/'>textexpander (1)</a></li>
+
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/whofman">@whofman</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whofman',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/octopress/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Hans Hofman -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

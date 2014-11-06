@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: octopress | Mijn Octopress Blog]]></title>
+  <link href="http://whofman.github.com//blog/tags/octopress/atom.xml" rel="self"/>
+  <link href="http://whofman.github.com//"/>
+  <updated>2014-11-03T17:19:34+01:00</updated>
+  <id>http://whofman.github.com//</id>
+  <author>
+    <name><![CDATA[Hans Hofman]]></name>
+    <email><![CDATA[hans@hahoweb.nl]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Deploy Octopress op Github]]></title>
+    <link href="http://whofman.github.com//2014/03/14/deploy-octopress-op-github/"/>
+    <updated>2014-03-14T23:27:44+01:00</updated>
+    <id>http://whofman.github.com//2014/03/14/deploy-octopress-op-github</id>
+    <content type="html"><![CDATA[<p>De volgende stappen zijn noodzakelijk</p>
+
+<pre><code>    Maak en Github repository (whofman.github.com)
+    rake setup_github_pages[git@github.com:whofman/whofman.github.com]
+    rake deploy
+    git add .   
+    git commit -am "Deployment Setup"
+    git push
+    git push --set-upstream origin source
+</code></pre>
+
+<p>Na de laatste <strong>push</strong> moet er ongeveer 10 minuten worden gewacht voordat de <strong>hostname</strong> is gepropageerd.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Customizations]]></title>
+    <link href="http://whofman.github.com//2014/03/13/octopress-customizations/"/>
+    <updated>2014-03-13T14:52:21+01:00</updated>
+    <id>http://whofman.github.com//2014/03/13/octopress-customizations</id>
+    <content type="html"><![CDATA[<p>Ik heb een aantal wijzigingen aangebracht gebaseerd op een artikel in <a href="" title="http://www.ewal.net/2012/09/08/octopress-customizations/">Ewal.net</a>. Deze zijn</p>
+
+<ul>
+<li>Verwijder /blog/ van URLs</li>
+<li>Maak een categories index page</li>
+<li>Een nieuw <strong>Rake Post</strong> taak</li>
+</ul>
+
+
+<p>Voorbeeld van een nieuwe post:</p>
+
+<pre><code>rake new_post["titel"]
+</code></pre>
+
+<p>In <strong>rake generate</strong> heb ik het copiëren van de gegenereerde code naar het target systeem toegevoegd:</p>
+
+<pre><code>target_dir = "/Users/hans/Site/myblog"
+cp_r "#{public_dir}/.", target_dir 
+</code></pre>
+
+<p>Een aantal andere <strong>Rake</strong> wijzigingen worden nog bestudeerd.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Huidige Octopress Setup]]></title>
+    <link href="http://whofman.github.com//2013/10/02/huidige-octopress-setup/"/>
+    <updated>2013-10-02T16:25:00+02:00</updated>
+    <id>http://whofman.github.com//2013/10/02/huidige-octopress-setup</id>
+    <content type="html"><![CDATA[<p>De vorige publicatie ging niet zoals ik dacht. Het bleek dat de huidige <em>Octopress setup</em> opgezet was om te publiceren op mijn <em>Github</em> blog. Derhalve moeten de volgende stappen gevolgd worden:</p>
+
+<pre><code>post "Huidige Octopress Setup" --dest octopress
+cd ~/octopress
+rake generate
+rake deploy
+</code></pre>
+
+<p>De url <strong>blog.hahoweb.nl</strong> wijst naar mijn <em>Github</em> account <em>whofman.github.com</em> via een <strong>CNAME</strong> bij mijn domain provider.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nieuwe ontwikkelingen]]></title>
+    <link href="http://whofman.github.com//2012/12/04/Nieuwe-ontwikkelingen/"/>
+    <updated>2012-12-04T15:59:00+01:00</updated>
+    <id>http://whofman.github.com//2012/12/04/Nieuwe-ontwikkelingen</id>
+    <content type="html"><![CDATA[<p>Na diverse pogingen is het (mij althans) onmogelijk gebleken om <strong>rake</strong> commands via <strong>Hazel</strong> uit te voeren. Derhalve doe ik dat (voorlopig?) weer handmatig.</p>
+
+<p>Ik heb nu een poging gewaagd om dit blog op <strong>GitHub</strong> te vestigen. Via diverse publicaties op het internet gewijd aan dit onderwerp, is het tenslotte gelukt.</p>
+
+<!--more-->
+
+
+<p>De volgende stappen waren noodzakelijk:</p>
+
+<pre><code>Create a GitHub repository: whofman.github.com
+
+rake setup_github_pages
+&gt; git@github.com:whofman/whofman.github.com
+cat 'blog.hahomail.nl' &gt; source/CNAME
+
+rake generate
+rake deploy
+</code></pre>
+
+<p>De blog is nu beschikbaar op http://whofman.github.com. Hierna wil ik nog een aparte domein naam (<em>blog.hahomail.nl</em>) gebruiken. Dat dient te gebeuren via mijn domein leverancier <em>*DomeinBalie</em>:</p>
+
+<pre><code>blog  CNAME whofman.github.com
+</code></pre>
+
+<p>Hiermee heb ik nu de mogelijkheid om dit blog op 3 manieren te publiceren:</p>
+
+<ul>
+<li>lokale (<em>Apache</em>) webserver</li>
+<li>webserver (<em>nginx</em>) op mijn <strong>Qnap TS-219P+</strong> NAS</li>
+<li><strong>GitHub</strong></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hazel en Octopress]]></title>
+    <link href="http://whofman.github.com//2012/12/03/Hazel-en-Octopress/"/>
+    <updated>2012-12-03T14:08:00+01:00</updated>
+    <id>http://whofman.github.com//2012/12/03/Hazel-en-Octopress</id>
+    <content type="html"><![CDATA[<p>Om publiceren van posts in <strong>Octopress</strong> te vergemakkelijken, wordt het volgende <strong>Hazel</strong> script gebruikt:</p>
+
+<pre><code>cd $HOME/octopress
+source $HOME/.rvm/scripts/rvm
+mv $1 source/_posts
+rake generate
+cp -R public/* /Libray/WebServer/Documents/octopress
+</code></pre>
+
+<p>Om de deployment naar de <strong>Apache</strong> server mogelijk te maken, is de <em>octpress</em> directory <em>open</em> gezet.</p>
+]]></content>
+  </entry>
+  
+</feed>

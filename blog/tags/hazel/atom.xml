@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: hazel | Mijn Octopress Blog]]></title>
+  <link href="http://whofman.github.com//blog/tags/hazel/atom.xml" rel="self"/>
+  <link href="http://whofman.github.com//"/>
+  <updated>2014-11-03T17:19:34+01:00</updated>
+  <id>http://whofman.github.com//</id>
+  <author>
+    <name><![CDATA[Hans Hofman]]></name>
+    <email><![CDATA[hans@hahoweb.nl]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Hernieuwd]]></title>
+    <link href="http://whofman.github.com//2013/05/09/octopress-hernieuwd/"/>
+    <updated>2013-05-09T13:48:35+02:00</updated>
+    <id>http://whofman.github.com//2013/05/09/octopress-hernieuwd</id>
+    <content type="html"><![CDATA[<p>Na een lange onderbreking heb ik weer eens naar <strong>Octopress</strong> gekeken. Op de website was te zien dat de ontwikkelaars niets gedaan hadden. Dus, dacht ik, kon ik de installatie files gemakkelijk naar mijn <strong>OS X</strong> Webserver overzetten. Helaas was dat te gemakkelijk gedacht. De <strong>Ruby</strong> versie was van 1.8.7 naar 2.1.1 gewijzigd. Ook was <strong>iconv</strong> in deze versie <em>deprecated</em>. Na wat zoeken bleek dat er niet ee-twee-drie een oplossing voor was. Ik heb dus op goed geluk de aanroep van <strong>iconv</strong> uit <strong>maraku/input/parse_doc.rb</strong> gesloopt. Ik zal wel zien wanneer en hoe dit fout gaat.</p>
+
+<p>Mijn tests lieten zien, dat een en ander nog steeds werkte. Het staat me nu dus vrij om weer met <strong>Octopress</strong> aan de gang te gaan.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress bijna klaar]]></title>
+    <link href="http://whofman.github.com//2012/12/10/Octopress-bijna-klaar/"/>
+    <updated>2012-12-10T18:02:30+01:00</updated>
+    <id>http://whofman.github.com//2012/12/10/Octopress-bijna-klaar</id>
+    <content type="html"><![CDATA[<p>Na het toevoegen van <strong>Tags</strong> is mijn inplementatie van <strong>Octopress</strong> bijna klaar. Ik wil nog een <em>Lees meer</em> optie hebben om te lange posts te vermijden op de <em>main</em> pagina. Dan heb ik gemerkt dat de Tags <strong>niet</strong> getoond worden op de <strong>Archief</strong> pagina, dus dat wil ik ook nog aanpassen.</p>
+
+<p>Het splitsen van lange <em>posts</em>, het eerste gedeelte op de <em>main</em> pagina, de rest als <strong>volledig artikel</strong> kan je bereiken met de <strong>more tag</strong>: &lt;!--more--></p>
+
+<p>Het toevoegen van <em>posts</em> gebeurt nu met de commandline utility <strong>post</strong>. Echter, daarna moet ik nog handmatig (in ~/octopress) de commando's <strong>rake generate</strong> en <strong>rake deploy</strong> uitvoeren. Dat wil ik ook nog automatiseren via <strong>Hazel</strong> en/of <strong>Launchd/Lingon</strong>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mijn Blog Keus]]></title>
+    <link href="http://whofman.github.com//2012/10/18/mijn-blog-keus/"/>
+    <updated>2012-10-18T14:45:00+02:00</updated>
+    <id>http://whofman.github.com//2012/10/18/mijn-blog-keus</id>
+    <content type="html"><![CDATA[<p>Na met diverse systemen geëxperimenteerd te hebben en rekening te houden met mijn post <em>Aandacht</em>, heb ik gekozen voor database overeenkomstig de <strong>Pritlog</strong> sqlite3 database. Deze zal gevoed worden door <em>Markdown</em> editors via een <strong>Hazel</strong> script. De editors saven de file in <em>~/Dropbox/Notes</em> met als filename <strong>bp_<em>&lt;filename></em>.md</strong>. Een <strong>Hazel </strong> regel verplaatst iedere file met voornoemde filename naar de <em>inbox</em> van het database systeem. Deze wordt op zijn beurt gescanned door een <em>cronjob</em> <strong>post_it.php</strong> die de tekst file converteerd en toevoegd aan de database.</p>
+
+<p>Een tekst file dient te worden voorzien van een <em>header</em> met minimaal de <strong>Titel:</strong> optie:</p>
+
+<ul>
+<li>Titel:&lt;post titel <strong>VEREIST</strong>></li>
+<li>Datum:<strong>yyyy-mm-dd</strong> [hh:mm:ss]</li>
+<li>Type:<strong>post</strong>|page</li>
+<li>Tag:&lt;keywords> gescheiden door een spatie</li>
+<li>Publ:<strong>1</strong>|0 (ja/nee publiseren)</li>
+</ul>
+
+
+<p>Via een <a href="http://hahoweb.nl:8000" title="webpagina">webpagina</a> kan de database bekeken worden. Te zijner tijd zal ook een <em>inline editor</em> worden toegevoegd.</p>
+
+<p>De volgende <em>markdown</em> editors zijn eenvoudig te configureren voor gebruik met dit <em>Blog</em> systeem:</p>
+
+<ul>
+<li><em>Byword</em>, een Mac en iOS editor</li>
+<li><em>Mou</em>, een Mac editor</li>
+<li><em>Writing Kit</em>, een iOS editor</li>
+<li><em>Denote</em>, een Android editor</li>
+</ul>
+
+
+<p>In feite is elke editor geschikt als deze tenminste een bestand in de <em>~/Dropbox/Notes</em> folder kan opslaan.</p>
+
+<p>Ik heb besloten het systeem <strong>HahoBlog</strong> te noemen</p>
+]]></content>
+  </entry>
+  
+</feed>

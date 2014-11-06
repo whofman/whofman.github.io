@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Mijn Octopress Blog]]></title>
+  <link href="http://whofman.github.com//atom.xml" rel="self"/>
+  <link href="http://whofman.github.com//"/>
+  <updated>2014-11-03T17:19:34+01:00</updated>
+  <id>http://whofman.github.com//</id>
+  <author>
+    <name><![CDATA[Hans Hofman]]></name>
+    <email><![CDATA[hans@hahoweb.nl]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Kirby v2 Panel]]></title>
+    <link href="http://whofman.github.com//2014/09/26/kirby-v2-panel/"/>
+    <updated>2014-09-26T13:28:44+02:00</updated>
+    <id>http://whofman.github.com//2014/09/26/kirby-v2-panel</id>
+    <content type="html"><![CDATA[<p>Kirby v2 panel gaf <em>write access</em> fouten, in tegenstelling tot de v1 versie. De oplossing was het toewijzen van de <em>ownership</em> of een aantal directories aan <strong>Apache</strong>.</p>
+
+<pre><code>    sudo chown -R _www:staff content
+    sudo chown -R _www:staff thumbs
+    sudo chown -R _www:staff site/accounts
+    sudo chown -R _www:staff site/cache
+    sudo chown -R _www:staff assets/avatars
+</code></pre>
+
+<p>en deze <strong>writable</strong> te maken.</p>
+
+<pre><code>    chmod -R 755 content
+    chmod -R 755 thumbs
+    chmod -R 755 site/accounts
+    chmod -R 755 site/cache
+    chmod -R 755 assets/avatars
+</code></pre>
+
+<p>Probleem opgelost.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kirby v2 Beta]]></title>
+    <link href="http://whofman.github.com//2014/09/23/kirby-v2-beta/"/>
+    <updated>2014-09-23T18:08:18+02:00</updated>
+    <id>http://whofman.github.com//2014/09/23/kirby-v2-beta</id>
+    <content type="html"><![CDATA[<p>Kirby v2 Beta is beschikbaar. Ik had dezelfde problemen met <strong>Apache</strong> mod_rewrite, dus heb ik er maar eens dieper ingedoken. Het probleem is kennelijk de instelling van de defaults van de server.</p>
+
+<p>/Library/Server/Web/Config/Apache2/Sites/</p>
+
+<pre><code>    Add to 0000_any_80_kirby.hahomail.nl.conf
+
+    Options Indexes Includes MultiViews FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</code></pre>
+
+<p>and then mod_rewrite werkt als bedoeld.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KirbyCMS]]></title>
+    <link href="http://whofman.github.com//2014/09/23/kirbycms/"/>
+    <updated>2014-09-23T16:39:49+02:00</updated>
+    <id>http://whofman.github.com//2014/09/23/kirbycms</id>
+    <content type="html"><![CDATA[<p>Kirby is een CMS gebaseerd op (markdown) bestanden, een zgn <strong>NoDB</strong> systeem. Dit betekent gemakkelijke beckup, idem aanmaken en wijzigen van postings via je standaard editor.</p>
+
+<p>Ik heb een implementatie gemaakt in ~/Sites/kirbycms en deze is oproepbaar via http://kirby.hahomail.nl. Slechts <em>één</em> wezenlijke modificatie was nodig om het systeem aan de praat te krijgen:</p>
+
+<pre><code>~/Sites/kirbycms/config/config.php
+    // disable mod_rewrite on iMac/OS X
+    c::set('rewrite', false);
+    c::set('url', 'http://kirby.hahomail.nl');
+</code></pre>
+
+<p>Dit was nodig omdat <strong>Apache</strong> (Mac OSX) problemen heeft met mod_rewrite. Boven staande fix repareert dit voldoende.</p>
+
+<p>Tevens heb ik de volgende opties geimplementeerd:</p>
+
+<pre><code>    Tags
+    Draft status
+    Datum van posting
+    Zoeken in de posts
+</code></pre>
+
+<p>Het posten van berichten gaat eenvoudig met de markdown editor <strong>Mou</strong> die opgeroepen wordt met het commandline script <strong>kirby-post</strong>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Deploy Octopress op Github]]></title>
+    <link href="http://whofman.github.com//2014/03/14/deploy-octopress-op-github/"/>
+    <updated>2014-03-14T23:27:44+01:00</updated>
+    <id>http://whofman.github.com//2014/03/14/deploy-octopress-op-github</id>
+    <content type="html"><![CDATA[<p>De volgende stappen zijn noodzakelijk</p>
+
+<pre><code>    Maak en Github repository (whofman.github.com)
+    rake setup_github_pages[git@github.com:whofman/whofman.github.com]
+    rake deploy
+    git add .   
+    git commit -am "Deployment Setup"
+    git push
+    git push --set-upstream origin source
+</code></pre>
+
+<p>Na de laatste <strong>push</strong> moet er ongeveer 10 minuten worden gewacht voordat de <strong>hostname</strong> is gepropageerd.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Customizations]]></title>
+    <link href="http://whofman.github.com//2014/03/13/octopress-customizations/"/>
+    <updated>2014-03-13T14:52:21+01:00</updated>
+    <id>http://whofman.github.com//2014/03/13/octopress-customizations</id>
+    <content type="html"><![CDATA[<p>Ik heb een aantal wijzigingen aangebracht gebaseerd op een artikel in <a href="" title="http://www.ewal.net/2012/09/08/octopress-customizations/">Ewal.net</a>. Deze zijn</p>
+
+<ul>
+<li>Verwijder /blog/ van URLs</li>
+<li>Maak een categories index page</li>
+<li>Een nieuw <strong>Rake Post</strong> taak</li>
+</ul>
+
+
+<p>Voorbeeld van een nieuwe post:</p>
+
+<pre><code>rake new_post["titel"]
+</code></pre>
+
+<p>In <strong>rake generate</strong> heb ik het copiëren van de gegenereerde code naar het target systeem toegevoegd:</p>
+
+<pre><code>target_dir = "/Users/hans/Site/myblog"
+cp_r "#{public_dir}/.", target_dir 
+</code></pre>
+
+<p>Een aantal andere <strong>Rake</strong> wijzigingen worden nog bestudeerd.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Huidige Octopress Setup]]></title>
+    <link href="http://whofman.github.com//2013/10/02/huidige-octopress-setup/"/>
+    <updated>2013-10-02T16:25:00+02:00</updated>
+    <id>http://whofman.github.com//2013/10/02/huidige-octopress-setup</id>
+    <content type="html"><![CDATA[<p>De vorige publicatie ging niet zoals ik dacht. Het bleek dat de huidige <em>Octopress setup</em> opgezet was om te publiceren op mijn <em>Github</em> blog. Derhalve moeten de volgende stappen gevolgd worden:</p>
+
+<pre><code>post "Huidige Octopress Setup" --dest octopress
+cd ~/octopress
+rake generate
+rake deploy
+</code></pre>
+
+<p>De url <strong>blog.hahoweb.nl</strong> wijst naar mijn <em>Github</em> account <em>whofman.github.com</em> via een <strong>CNAME</strong> bij mijn domain provider.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Stappen voor nieuwe iMac]]></title>
+    <link href="http://whofman.github.com//2013/10/02/stappen-voor-nieuwe-imac/"/>
+    <updated>2013-10-02T15:35:37+02:00</updated>
+    <id>http://whofman.github.com//2013/10/02/stappen-voor-nieuwe-imac</id>
+    <content type="html"><![CDATA[<p>Ik heb een nieuwe iMac besteld met een <em>Fusion</em> drive. Ik wil eigenlijk hierop een <strong>schone</strong> installatie doen. Maar een aantal applicaties wil ik gewoon overzetten, zoals <em>Octopress</em> en mijn <em>pritlog/blog</em> systeem. Aangezien het een half jaar geleden was dat ik voor het laatst iets met beide systemen deed, ben ik het overzicht over de diverse folders enigszins kwijt geraakt. Dat moet ik nu oppoetsen. Hiertoe begin ik met het (proberen te) posten van dit bericht:</p>
+
+<pre><code>post "Stappen voor een nieuwe iMac" --dest octopress
+cd ~/octopress
+rake generate
+cp -r public/* /Volumes/Web/octopress
+</code></pre>
+
+<p>Dit waren de handmatige stappen om tot publicatie te komen voor zover ik me herinner. Ben benieuwd!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Hernieuwd]]></title>
+    <link href="http://whofman.github.com//2013/05/09/octopress-hernieuwd/"/>
+    <updated>2013-05-09T13:48:35+02:00</updated>
+    <id>http://whofman.github.com//2013/05/09/octopress-hernieuwd</id>
+    <content type="html"><![CDATA[<p>Na een lange onderbreking heb ik weer eens naar <strong>Octopress</strong> gekeken. Op de website was te zien dat de ontwikkelaars niets gedaan hadden. Dus, dacht ik, kon ik de installatie files gemakkelijk naar mijn <strong>OS X</strong> Webserver overzetten. Helaas was dat te gemakkelijk gedacht. De <strong>Ruby</strong> versie was van 1.8.7 naar 2.1.1 gewijzigd. Ook was <strong>iconv</strong> in deze versie <em>deprecated</em>. Na wat zoeken bleek dat er niet ee-twee-drie een oplossing voor was. Ik heb dus op goed geluk de aanroep van <strong>iconv</strong> uit <strong>maraku/input/parse_doc.rb</strong> gesloopt. Ik zal wel zien wanneer en hoe dit fout gaat.</p>
+
+<p>Mijn tests lieten zien, dat een en ander nog steeds werkte. Het staat me nu dus vrij om weer met <strong>Octopress</strong> aan de gang te gaan.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enkele Laatste Wijzigingen]]></title>
+    <link href="http://whofman.github.com//2012/12/28/enkele-laatste-wijzigingen/"/>
+    <updated>2012-12-28T15:01:17+01:00</updated>
+    <id>http://whofman.github.com//2012/12/28/enkele-laatste-wijzigingen</id>
+    <content type="html"><![CDATA[<p>Ik heb nog enkele wijzigingen in Octopress aangebracht, voornamenlijk om de teksten te &#8220;vernederlandsen&#8221;. Deze betreffen de modules:</p>
+
+<pre><code>_config.yml
+source/_includes/navigation.html
+source/_includes/custom/navigation.html
+source/_includes/custom/asides/about.html
+source/_includes/custom/asides/category_list.html
+</code></pre>
+
+<p>Ook heb ik een <em>bash</em> opdracht <strong>deploy</strong> (<em>~/bin/deploy</em>) aangemaakt om de gegenereerde files naar mijn lokale (Mac) server te synchroniseren.</p>
+
+<p>Overigens, <strong>rake</strong> automatisch laten verlopen is moeilijker dan gedacht.</p>
+
+<p>Tenslotte, de <strong>Octopress</strong> manier om &#8220;posts&#8221; aante maken via <em>rake new_post &#8220;Titel&#8221;</em> vond ik zeer onhandig. Daarom heb ik een andere opdracht <strong>post</strong> (<em>~/bin/post</em>) gemaakt, die niet alleen de correcte header file creëert, maar dit tevens doet in de juist directory:</p>
+
+<pre><code>post "titel" [--tag tags, …] [--cat cats, ...] 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress bijna klaar]]></title>
+    <link href="http://whofman.github.com//2012/12/10/Octopress-bijna-klaar/"/>
+    <updated>2012-12-10T18:02:30+01:00</updated>
+    <id>http://whofman.github.com//2012/12/10/Octopress-bijna-klaar</id>
+    <content type="html"><![CDATA[<p>Na het toevoegen van <strong>Tags</strong> is mijn inplementatie van <strong>Octopress</strong> bijna klaar. Ik wil nog een <em>Lees meer</em> optie hebben om te lange posts te vermijden op de <em>main</em> pagina. Dan heb ik gemerkt dat de Tags <strong>niet</strong> getoond worden op de <strong>Archief</strong> pagina, dus dat wil ik ook nog aanpassen.</p>
+
+<p>Het splitsen van lange <em>posts</em>, het eerste gedeelte op de <em>main</em> pagina, de rest als <strong>volledig artikel</strong> kan je bereiken met de <strong>more tag</strong>: &lt;!&#8211;more&#8211;></p>
+
+<p>Het toevoegen van <em>posts</em> gebeurt nu met de commandline utility <strong>post</strong>. Echter, daarna moet ik nog handmatig (in ~/octopress) de commando&#8217;s <strong>rake generate</strong> en <strong>rake deploy</strong> uitvoeren. Dat wil ik ook nog automatiseren via <strong>Hazel</strong> en/of <strong>Launchd/Lingon</strong>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nieuwe ontwikkelingen]]></title>
+    <link href="http://whofman.github.com//2012/12/04/Nieuwe-ontwikkelingen/"/>
+    <updated>2012-12-04T15:59:00+01:00</updated>
+    <id>http://whofman.github.com//2012/12/04/Nieuwe-ontwikkelingen</id>
+    <content type="html"><![CDATA[<p>Na diverse pogingen is het (mij althans) onmogelijk gebleken om <strong>rake</strong> commands via <strong>Hazel</strong> uit te voeren. Derhalve doe ik dat (voorlopig?) weer handmatig.</p>
+
+<p>Ik heb nu een poging gewaagd om dit blog op <strong>GitHub</strong> te vestigen. Via diverse publicaties op het internet gewijd aan dit onderwerp, is het tenslotte gelukt.</p>
+
+<!--more-->
+
+
+<p>De volgende stappen waren noodzakelijk:</p>
+
+<pre><code>Create a GitHub repository: whofman.github.com
+
+rake setup_github_pages
+&gt; git@github.com:whofman/whofman.github.com
+cat 'blog.hahomail.nl' &gt; source/CNAME
+
+rake generate
+rake deploy
+</code></pre>
+
+<p>De blog is nu beschikbaar op http://whofman.github.com. Hierna wil ik nog een aparte domein naam (<em>blog.hahomail.nl</em>) gebruiken. Dat dient te gebeuren via mijn domein leverancier <em>*DomeinBalie</em>:</p>
+
+<pre><code>blog  CNAME whofman.github.com
+</code></pre>
+
+<p>Hiermee heb ik nu de mogelijkheid om dit blog op 3 manieren te publiceren:</p>
+
+<ul>
+<li>lokale (<em>Apache</em>) webserver</li>
+<li>webserver (<em>nginx</em>) op mijn <strong>Qnap TS-219P+</strong> NAS</li>
+<li><strong>GitHub</strong></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hazel en Octopress]]></title>
+    <link href="http://whofman.github.com//2012/12/03/Hazel-en-Octopress/"/>
+    <updated>2012-12-03T14:08:00+01:00</updated>
+    <id>http://whofman.github.com//2012/12/03/Hazel-en-Octopress</id>
+    <content type="html"><![CDATA[<p>Om publiceren van posts in <strong>Octopress</strong> te vergemakkelijken, wordt het volgende <strong>Hazel</strong> script gebruikt:</p>
+
+<pre><code>cd $HOME/octopress
+source $HOME/.rvm/scripts/rvm
+mv $1 source/_posts
+rake generate
+cp -R public/* /Libray/WebServer/Documents/octopress
+</code></pre>
+
+<p>Om de deployment naar de <strong>Apache</strong> server mogelijk te maken, is de <em>octpress</em> directory <em>open</em> gezet.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rake Test]]></title>
+    <link href="http://whofman.github.com//2012/12/03/Rake-Test/"/>
+    <updated>2012-12-03T13:38:00+01:00</updated>
+    <id>http://whofman.github.com//2012/12/03/Rake-Test</id>
+    <content type="html"><![CDATA[<p>Deze post wordt in eerste instantie geplaatst in de folder ~/Dropbox/Posts. Hazel zal dan deze post verplaatsen naar ~/octopress/source/_posts indien de meta conditie <strong>published</strong> <em>true</em> is. Als tweede aktie wordt een script uitgevoerd met de opdracht ”<em>rake generate</em>”. Vervolgens wordt de gegenereerde data getransferreerd naar de lokale webserver.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Blog Server]]></title>
+    <link href="http://whofman.github.com//2012/11/29/blog-server/"/>
+    <updated>2012-11-29T14:44:00+01:00</updated>
+    <id>http://whofman.github.com//2012/11/29/blog-server</id>
+    <content type="html"><![CDATA[<p>Alle blog systemen werden getest op mijn <strong>NAS</strong>, een <strong>Qnap TS-219P+</strong> systeem met 2 Tb drivers
+in <em>Raid-0</em> configuratie. Web access was gemakkelijk via de link <a href="http://sun/blog">sun</a> waarin sun de lokale naam van de server is. Om het definitieve systeem ook via mijn eigen domein op internet te kunnen benaderen, moest ik gebruik maken van een virtual host op een ander port dan de standaard 80. (dit door de eisen van een lokale mac computer) Dit zou de eerste keer worden dat ik gebruik moest maken van een virtuele host op de <strong>Apache web server</strong>. Dat heb ik alsvolgt geraliseerd:</p>
+
+<pre><code>&lt;VirtualHost *:8000&gt;
+    ServerAdmain hans@hahoweb.nl 
+    DocumentRoot /share/Web/blog 
+    ServerName blog.hahoweb.nl 
+&lt;VirtualHost&gt;
+</code></pre>
+
+<p>Hiermee kan ik de blog via internet benaderen met de Url <strong>(http://blog.hahoweb.nl:8000/)</strong>.</p>
+
+<p>De domein naam <strong>hahoweb.nl</strong>
+ heb ik sinds lange tijd in gebruik.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Day One]]></title>
+    <link href="http://whofman.github.com//2012/11/19/day-one/"/>
+    <updated>2012-11-19T15:04:00+01:00</updated>
+    <id>http://whofman.github.com//2012/11/19/day-one</id>
+    <content type="html"><![CDATA[<p>Ik heb vandaag de scripts van <em>Brett Terpstra</em> betreffende <strong>Day One</strong> geïmplementeerd op de iMac. In <em>~/bin</em>  <strong>logtodayone.rb</strong> en in <em>~/Library/Applications Support/Launchbar/Actions/</em> <strong>Log to Day One.scpt</strong>. Ook heb ik een alias <strong>log</strong> dat een entry aan de <strong>Day One</strong> dagbiek toevoegd.</p>
+
+<p>De syntax van een entry is alsvolgt: ”! [datum] tekst” met optioneel ! voor een <strong>star</strong> entry.  Het datum formaat kan zijn</p>
+
+<ul>
+<li>y     gisteren (yesterday)</li>
+<li>−3      3 dagen geleden</li>
+<li>. 12:30   om half een.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mijn Blog Keus]]></title>
+    <link href="http://whofman.github.com//2012/10/18/mijn-blog-keus/"/>
+    <updated>2012-10-18T14:45:00+02:00</updated>
+    <id>http://whofman.github.com//2012/10/18/mijn-blog-keus</id>
+    <content type="html"><![CDATA[<p>Na met diverse systemen geëxperimenteerd te hebben en rekening te houden met mijn post <em>Aandacht</em>, heb ik gekozen voor database overeenkomstig de <strong>Pritlog</strong> sqlite3 database. Deze zal gevoed worden door <em>Markdown</em> editors via een <strong>Hazel</strong> script. De editors saven de file in <em>~/Dropbox/Notes</em> met als filename <strong>bp_<em>&lt;filename></em>.md</strong>. Een <strong>Hazel </strong> regel verplaatst iedere file met voornoemde filename naar de <em>inbox</em> van het database systeem. Deze wordt op zijn beurt gescanned door een <em>cronjob</em> <strong>post_it.php</strong> die de tekst file converteerd en toevoegd aan de database.</p>
+
+<p>Een tekst file dient te worden voorzien van een <em>header</em> met minimaal de <strong>Titel:</strong> optie:</p>
+
+<ul>
+<li>Titel:&lt;post titel <strong>VEREIST</strong>></li>
+<li>Datum:<strong>yyyy-mm-dd</strong> [hh:mm:ss]</li>
+<li>Type:<strong>post</strong>|page</li>
+<li>Tag:&lt;keywords> gescheiden door een spatie</li>
+<li>Publ:<strong>1</strong>|0 (ja/nee publiseren)</li>
+</ul>
+
+
+<p>Via een <a href="http://hahoweb.nl:8000" title="webpagina">webpagina</a> kan de database bekeken worden. Te zijner tijd zal ook een <em>inline editor</em> worden toegevoegd.</p>
+
+<p>De volgende <em>markdown</em> editors zijn eenvoudig te configureren voor gebruik met dit <em>Blog</em> systeem:</p>
+
+<ul>
+<li><em>Byword</em>, een Mac en iOS editor</li>
+<li><em>Mou</em>, een Mac editor</li>
+<li><em>Writing Kit</em>, een iOS editor</li>
+<li><em>Denote</em>, een Android editor</li>
+</ul>
+
+
+<p>In feite is elke editor geschikt als deze tenminste een bestand in de <em>~/Dropbox/Notes</em> folder kan opslaan.</p>
+
+<p>Ik heb besloten het systeem <strong>HahoBlog</strong> te noemen</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Blog Systeem Overzicht]]></title>
+    <link href="http://whofman.github.com//2012/10/16/blog-systeem-overzicht/"/>
+    <updated>2012-10-16T14:45:00+02:00</updated>
+    <id>http://whofman.github.com//2012/10/16/blog-systeem-overzicht</id>
+    <content type="html"><![CDATA[<p>Het resultaat van het bekijken van een aantal blog systemen voor persoonlijk gebruik. Ik heb vooral gekeken naar de volgende criteria:</p>
+
+<ul>
+<li>Koppeling aan (sub)domain</li>
+<li>Implementeren op eigen server</li>
+<li>Zoek faciliteiten op het blog systeem</li>
+</ul>
+
+
+<p>Kort overzicht</p>
+
+<ul>
+<li><p><strong>GoDrop.it</strong></p>
+
+<p>  <code>Dit systeem werkt goed. De Sync frekwentie is laag als je aan het testen bent. Ik mis hier nog het gebruiken van een (sub)domein en en mogelijkheid om het Archief te doorzoeken</code></p></li>
+<li><p>__<a href="http://scriptogr.am">Scriptogr.am</a></p>
+
+<p>  <code>Ook een prettig werkend systeem, vooral met de Mac editor Mou. Deze kan direct in de post directory van scriptogr.am schrijven. Helaas ontbeert scriptogr.am automatische synchronisatie. Het systeem ondersteunt wel het gebruik van een (sub)domein.</code></p></li>
+<li><p><strong>Skrivr</strong></p>
+
+<p>  <code>Nog niet voor iedereen te gebruiken. Ik wacht (al lang) op een uitnodiging.</code></p></li>
+<li><p>__<a href="http://pritlog.com">Pritlog</a></p>
+
+<p>  <code>Dit systeem ik heb draaien op mijn server. Het is niet alleen voor persoonlijk gebruik. Posting gebeurt via het web interface. Ik heb een driver gemaakt die .md files in het systeem zet. Triggering doet Hazel die een posting folder monitoort.</code></p></li>
+<li><p><strong>Simple PHP Blog</strong></p>
+
+<p>  <code>Ook dit systeem draait op mijn server. Ik vind de home pagina te "druk". Verder lijkt het moelijk om auto-insert te realiseren.</code></p></li>
+<li><p>__<a href="http://phpsqlitecms.net">PHPSqliteCms</a></p>
+
+<p>  <code>Zie Simple PHP Blog</code></p></li>
+<li><p>__<a href="http://www.s9y.org">Serendipity</a></p>
+
+<p>  <code>Zie Simple PHP Blog</code></p></li>
+</ul>
+
+
+<p>Het voorlopige resultaat van dit onderzoekje is dat ik verder aan de slag ga met zowel <em>godrop.it</em> als <em>scriptogr.am</em>. Ondermeer zal ik <strong>Search</strong> bekijken en mogelijk <strong>CSS</strong> aanpassingen.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Blogging Systemen]]></title>
+    <link href="http://whofman.github.com//2012/10/13/testing-online-blogging/"/>
+    <updated>2012-10-13T14:45:00+02:00</updated>
+    <id>http://whofman.github.com//2012/10/13/testing-online-blogging</id>
+    <content type="html"><![CDATA[<p>De eerste file is aangemaakt in een verzamel directory <em>Posts</em>. Deze directory wordt op de Mac gemonitored door <em>Hazel</em> op files met extensie .md. Wordt er een gevonden dan worden de volgende regels toegepast:</p>
+
+<ul>
+<li>Copy to Dropbox/Apps/GoDrop.it/Posts</li>
+<li>Copy to Dropbox.Apps/Scriptogram/Posts/</li>
+<li>Rename to .txt extensie</li>
+</ul>
+
+
+<p>De file is goed aangekomen in GoDrop.it. Met het andere systeem heb ik nog problemen. De <strong>sync</strong> knop werkt bij mij niet en ik ga dus maar eens uitzoeken hoe dit komt.</p>
+
+<p><strong>Opmerking</strong></p>
+
+<p><strong>Let op</strong>. De H1 titel  &#8221; Blogging system&#8221; wordt vervangen door de <strong>Title:</strong> van deze post.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Blogging systeem eigenschappen]]></title>
+    <link href="http://whofman.github.com//2012/10/08/Blogging-Systeem-Eigenschappen/"/>
+    <updated>2012-10-08T00:00:00+02:00</updated>
+    <id>http://whofman.github.com//2012/10/08/Blogging-Systeem-Eigenschappen</id>
+    <content type="html"><![CDATA[<p>De volgende punten verdienen aandacht:</p>
+
+<ul>
+<li>Gebruik van Tags</li>
+<li>Gebruiken van filenames met datum/tijd indicatie en hun archivering</li>
+<li>Posten via de <em>Mac</em> command line</li>
+<li>Het gebruik van <em>Hazel</em> op de <em>Mac</em></li>
+<li><em>scriptogr.am</em> heeft een <strong>Archief</strong> systeem, <em>godrip.it</em> niet.</li>
+</ul>
+
+
+<p>Naast deze punten ga ik ook t.z.t. naar <em>Search</em> en <em>CSS</em> kijken.</p>
+
+<p><strong>Opmerking</strong></p>
+
+<p>De <em>dropgo.it</em> sites van <em>now</em>, <em>michielroelfsema</em> en <em>minddrop</em> zij interessant om te bekijken.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Diverse Blogging Systemen]]></title>
+    <link href="http://whofman.github.com//2012/10/07/diverse-blogging-systemen/"/>
+    <updated>2012-10-07T15:13:00+02:00</updated>
+    <id>http://whofman.github.com//2012/10/07/diverse-blogging-systemen</id>
+    <content type="html"><![CDATA[<p>Via een serie van korte posts ga ik op zoek naar een ideaal personal blog systeem. Tevens is het de bedoeling dit op een later tijdstip te migreren naar mijn NAS. De volgende systemen komen als eerste aan de beurt.</p>
+
+<ul>
+<li>GoDrop.it</li>
+<li>Scriptogr.am</li>
+<li>Skrivr</li>
+<li>Pritlog</li>
+<li>Simple PHP Blog</li>
+<li>PHPSqliteCms</li>
+<li>Serendipity</li>
+</ul>
+
+
+<p>Mijn test setup is zodanig ik een copyright van alle Posts bewaar en een utility deze naar de juiste Dropbox locatie laat verplaatsen. Op zo&#8217;n manier kan ik meerdere systemen tegelijk testen.</p>
+
+<p>Een aantal andere systemen is mischien ook nog de moeite waard:</p>
+
+<ul>
+<li>PivotX.net</li>
+<li>Octopress.org</li>
+<li>Jekyll</li>
+<li>TextPattern.com</li>
+</ul>
+
+
+<p>Ik wil hier een plaatje laten zien. Het image dient zich te bevinden in de <strong>images</strong> directory en de syntax
+van het statement is alsvolgt:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>   ![alt tekst](/images/&lt;image&gt; "Picture tekst")</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://whofman.github.com//images/werkkamer.jpg" title="Hobby Kamer" alt="Mijn werkkamer" /></p>
+
+<center>Mijn Hobby Kamer</center>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>
